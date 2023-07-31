@@ -18,3 +18,22 @@ export const getMovies = async () =>{
         return error.message;
     }
 }
+
+export const searchMovies = async (query) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}/3/search/movie?query=${query}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${ACCESS_TOKEN}`
+          }
+        }
+      );
+  
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      return error.message;
+    }
+  };
